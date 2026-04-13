@@ -1,0 +1,5 @@
+Dataset1.csv
+venv/
+__pycache__/
+*.pkl
+.streamlit/
