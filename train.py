@@ -40,33 +40,3 @@ pickle.dump(model, open("model.pkl", "wb"))
 pickle.dump(le, open("encoder.pkl", "wb"))
 
 print("✅ Model trained and saved!")
-import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-import pickle
-
-# dataset load karo
-df = pd.read_csv("Dataset1.csv")
-
-print(df.columns)
-# features aur label separate karo
-X = df.drop("diseases", axis=1)
-y = df["diseases"]
-
-# label encoding (text → number)
-le = LabelEncoder()
-y = le.fit_transform(y)
-
-# train-test split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-# model train karo
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
-
-# model save karo
-pickle.dump(model, open("model.pkl", "wb"))
-pickle.dump(le, open("encoder.pkl", "wb"))
-
-print("✅ Model trained successfully!")
